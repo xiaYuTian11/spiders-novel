@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sites>
+    <site>
+        <title>顶点小说</title>
+        <charset>GBK</charset>
+        <url>https://www.230book.com/</url>
+        <chapter-list-selector>#list li a</chapter-list-selector>
+        <chapter-rule>href</chapter-rule>
+    </site>
+    <site>
+        <title>笔趣阁</title>
+        <charset>UTF-8</charset>
+        <url>https://www.biquge.com.cn/</url>
+        <chapter-list-selector>#list dd a</chapter-list-selector>
+        <chapter-rule>href</chapter-rule>
+    </site>
+</sites>
