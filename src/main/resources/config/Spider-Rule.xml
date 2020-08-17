@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sites>
+    <site>
+        <title>顶点小说</title>
+        <charset>GBK</charset>
+        <url>https://www.230book.com/</url>
+        <chapter-list-selector>#list li a</chapter-list-selector>
+        <chapter-rule>href</chapter-rule>
+        <chapter-detail-title-selector>.bookname h1</chapter-detail-title-selector>
+        <chapter-detail-content-selector>#content</chapter-detail-content-selector>
+        <chapter-detail-prev-selector>.bottem2 a,1</chapter-detail-prev-selector>
+        <chapter-detail-next-selector>.bottem2 a,3</chapter-detail-next-selector>
+    </site>
+    <site>
+        <title>笔趣阁</title>
+        <charset>UTF-8</charset>
+        <url>https://www.biquge.com.cn/</url>
+        <chapter-list-selector>#list dd a</chapter-list-selector>
+        <chapter-rule>href</chapter-rule>
+        <chapter-detail-title-selector>.bookname h1</chapter-detail-title-selector>
+        <chapter-detail-content-selector>#content</chapter-detail-content-selector>
+        <chapter-detail-prev-selector>.bottem2 a,0</chapter-detail-prev-selector>
+        <chapter-detail-next-selector>.bottem2 a,2</chapter-detail-next-selector>
+    </site>
+    <site>
+        <title>笔下文学</title>
+        <charset>UTF-8</charset>
+        <url>https://www.bxwxorg.com/</url>
+        <chapter-list-selector>#list dd a</chapter-list-selector>
+        <chapter-rule>href</chapter-rule>
+        <chapter-detail-title-selector>.bookname h1</chapter-detail-title-selector>
+        <chapter-detail-content-selector>#content</chapter-detail-content-selector>
+        <chapter-detail-prev-selector>.bottem2 a,1</chapter-detail-prev-selector>
+        <chapter-detail-next-selector>.bottem2 a,3</chapter-detail-next-selector>
+    </site>
+</sites>

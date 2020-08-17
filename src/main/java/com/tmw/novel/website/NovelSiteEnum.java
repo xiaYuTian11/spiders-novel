@@ -14,7 +14,11 @@ public enum NovelSiteEnum {
     /**
      * 笔趣阁
      */
-    BQG(2, "biquge.com.cn");
+    BQG(2, "biquge.com.cn"),
+    /**
+     * 笔下文学
+     */
+    BXWX(3, "bxwxorg.com");
     private int id;
     private String url;
 

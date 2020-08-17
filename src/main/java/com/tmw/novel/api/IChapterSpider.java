@@ -1,7 +1,6 @@
 package com.tmw.novel.api;
 
 import com.tmw.novel.entity.Chapter;
-import com.tmw.novel.website.Website;
 
 import java.util.List;
 
@@ -19,7 +18,7 @@ public interface IChapterSpider {
      * @param website 小说网站
      * @return 目录列表
      */
-    List<Chapter> getChapterList(Website website);
+    // List<Chapter> getChapterList(Website website);
 
     /**
      * 获取章节目录列表

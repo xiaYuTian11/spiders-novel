@@ -43,7 +43,7 @@
         <appender-ref ref="log-console"/>
     </appender>
 
-	<root level="ALL">
+	<root level="INFO">
         <appender-ref ref="console" />
 		<appender-ref ref="async-log-console" />
 	</root>
