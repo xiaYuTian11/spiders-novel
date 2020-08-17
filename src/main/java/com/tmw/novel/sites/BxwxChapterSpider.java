@@ -1,6 +1,6 @@
 package com.tmw.novel.sites;
 
-import com.tmw.novel.abs.AbstractCommonSortChapterSpider;
+import com.tmw.novel.abs.chapter.AbstractCommonSortChapterSpider;
 
 /**
  * 笔下文学章节，添加排序规则

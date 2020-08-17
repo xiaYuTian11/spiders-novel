@@ -1,5 +1,6 @@
 package com.tmw.novel.abs;
 
+import com.tmw.novel.abs.download.NovelDownload;
 import com.tmw.novel.config.Configuration;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +17,7 @@ class NovelDownloadTest {
         String url = "https://www.bxwxorg.com/read/131108/";
         Configuration configuration = new Configuration();
         configuration.setSize(20);
-        configuration.setPath("C:\\Users\\Administrator\\Desktop\\download\\");
+        configuration.setPath("C:\\Users\\tmw\\Desktop\\download\\");
         NovelDownload novelDownload = new NovelDownload();
 
         novelDownload.download(url, configuration);

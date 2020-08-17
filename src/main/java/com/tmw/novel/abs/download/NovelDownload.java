@@ -1,15 +1,11 @@
-package com.tmw.novel.abs;
+package com.tmw.novel.abs.download;
 
-import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.ListenableFuture;
-import com.google.common.util.concurrent.ListeningExecutorService;
 import com.tmw.novel.api.IChapterSpider;
 import com.tmw.novel.api.INovelDownload;
 import com.tmw.novel.config.Configuration;
 import com.tmw.novel.entity.Chapter;
 import com.tmw.novel.uitl.ChapterSpiderFactory;
 import com.tmw.novel.uitl.NovelSpiderUtil;
-import com.tmw.novel.uitl.ThreadPoolUtil;
 import com.tmw.novel.website.NovelSiteEnum;
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,8 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutionException;
+import java.util.concurrent.*;
 
 /**
  * 下载
@@ -44,17 +39,23 @@ public class NovelDownload implements INovelDownload {
             downloadTaskAlloc.put(fromIndex + "-" + toIndex, chapterList.subList(fromIndex, toIndex));
         }
         // 通过这两段代码就可以创建缺失的路径
-        String savePath = config.getPath() + "/" + NovelSiteEnum.getEnumByUrl(url).getUrl();
-        new File(savePath).mkdirs();
+        String savePath = config.getPath() + File.separator + NovelSiteEnum.getEnumByUrl(url).getUrl();
+        File file = new File(savePath);
+        if (!file.exists()) {
+            boolean mkdirs = file.mkdirs();
+            log.info("创建文件夹：{}", mkdirs);
+        }
 
         // 多线程下载
-        final ListeningExecutorService executorService = ThreadPoolUtil.getExecutorService(maxThreadSize);
-        // ExecutorService executorService = Executors.newFixedThreadPool(maxThreadSize);
+        // final ListeningExecutorService executorService = ThreadPoolUtil.getExecutorService(maxThreadSize);
+        ExecutorService executorService = Executors.newFixedThreadPool(maxThreadSize);
         Set<String> keySet = downloadTaskAlloc.keySet();
-        List<ListenableFuture<String>> tasks = new ArrayList<>();
+        // List<ListenableFuture<String>> tasks = new ArrayList<>();
+        List<Future<String>> tasks = new ArrayList<>();
         keySet.parallelStream().forEach(key -> {
-            final ListenableFuture<String> future = executorService.submit(new DownloadCallable(config.getPath() + "/" + key + ".txt", downloadTaskAlloc.get(key)));
-            Futures.addCallback(future, new DownLoadCallBack(future), executorService);
+            final Future<String> future = executorService.submit(new DownloadCallable(savePath + "/" + key + ".txt", downloadTaskAlloc.get(key)));
+            // final ListenableFuture<String> future = executorService.submit(new DownloadCallable(savePath + "/" + key + ".txt", downloadTaskAlloc.get(key)));
+            // Futures.addCallback(future, new DownLoadCallBack(future), executorService);
             tasks.add(future);
         });
         executorService.shutdown();
@@ -65,8 +66,8 @@ public class NovelDownload implements INovelDownload {
                 log.error("下载失败：{}", e.getMessage());
             }
         });
-        NovelSpiderUtil.multiFileMerge(savePath, null, true);
-        return savePath + "/merge.txt";
+
+        return NovelSpiderUtil.multiFileMerge(savePath, null, true);
     }
 
 }

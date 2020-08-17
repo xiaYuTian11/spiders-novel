@@ -1,6 +1,6 @@
 package com.tmw.novel.sites;
 
-import com.tmw.novel.abs.AbstractChapterDetailSpider;
+import com.tmw.novel.abs.chapter.AbstractChapterDetailSpider;
 
 /**
  * 文章内容获取默认实现

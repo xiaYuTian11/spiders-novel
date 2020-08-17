@@ -1,4 +1,4 @@
-package com.tmw.novel.abs;
+package com.tmw.novel.abs.download;
 
 import com.tmw.novel.api.IChapterDetailSpider;
 import com.tmw.novel.entity.Chapter;
@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.concurrent.Callable;
 
@@ -36,8 +35,10 @@ public class DownloadCallable implements Callable<String> {
 
     @Override
     public String call() {
+        File file = new File(path);
+        file.deleteOnExit();
         try (
-                PrintWriter out = new PrintWriter(new File(path), StandardCharsets.UTF_8);
+                PrintWriter out = new PrintWriter(file);
         ) {
             for (Chapter chapter : chapterList) {
                 for (int i = 0; i < tryTimes; i++) {

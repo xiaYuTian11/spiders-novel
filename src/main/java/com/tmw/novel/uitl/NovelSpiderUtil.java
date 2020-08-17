@@ -8,10 +8,8 @@ import org.dom4j.io.SAXReader;
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 小说工具类
@@ -63,20 +61,21 @@ public class NovelSpiderUtil {
      * @param path        基础目录，该根目录下的所有文本文件都会被合并到 mergeToFile
      * @param mergeToFile 被合并的文本文件，这个参数可以为null,合并后的文件保存在path/merge.txt
      */
-    public static void multiFileMerge(String path, String mergeToFile, boolean deleteThisFile) {
+    public static String multiFileMerge(String path, String mergeToFile, boolean deleteThisFile) {
         mergeToFile = mergeToFile == null ? path + "/merge.txt" : mergeToFile;
         File[] files = new File(path).listFiles((dir, name) -> name.endsWith(".txt"));
         assert files != null;
-        Arrays.sort(files, (o1, o2) -> {
+        List<File> fileList = Arrays.stream(files).filter(file -> !Objects.equals(file.getName(), "merge.txt")).sorted((o1, o2) -> {
             int o1Index = Integer.parseInt(o1.getName().split("-")[0]);
             int o2Index = Integer.parseInt(o2.getName().split("-")[0]);
             return Integer.compare(o1Index, o2Index);
-        });
+        }).collect(Collectors.toList());
 
         PrintWriter out = null;
         try {
-            out = new PrintWriter(new File(mergeToFile), StandardCharsets.UTF_8);
-            for (File file : files) {
+            File descFile = new File(mergeToFile);
+            out = new PrintWriter(descFile);
+            for (File file : fileList) {
                 BufferedReader bufr = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8));
                 String line;
                 while ((line = bufr.readLine()) != null) {
@@ -94,6 +93,7 @@ public class NovelSpiderUtil {
             assert out != null;
             out.close();
         }
+        return mergeToFile;
     }
 
 }

@@ -1,4 +1,4 @@
-package com.tmw.novel.abs;
+package com.tmw.novel.abs.chapter;
 
 import com.tmw.novel.api.IChapterDetailSpider;
 import com.tmw.novel.entity.ChapterDetail;

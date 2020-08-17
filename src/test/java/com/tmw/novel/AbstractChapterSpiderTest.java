@@ -1,12 +1,10 @@
 package com.tmw.novel;
 
-import com.tmw.novel.abs.AbstractChapterSpider;
+import com.tmw.novel.abs.chapter.AbstractChapterSpider;
 import com.tmw.novel.entity.Chapter;
 import com.tmw.novel.sites.BqgChapterSpider;
 import com.tmw.novel.sites.BxwxChapterSpider;
 import com.tmw.novel.sites.DdxsChapterSpider;
-import com.tmw.novel.sites.DefaultChapterSpider;
-import com.tmw.novel.website.Website;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

@@ -1,5 +1,6 @@
 package com.tmw.novel.abs;
 
+import com.tmw.novel.abs.chapter.AbstractChapterDetailSpider;
 import com.tmw.novel.entity.ChapterDetail;
 import com.tmw.novel.sites.DefaultChapterDetailSpider;
 import org.junit.jupiter.api.Test;
