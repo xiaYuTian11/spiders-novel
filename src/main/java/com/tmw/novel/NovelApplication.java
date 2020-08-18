@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author TMW
  */
 @SpringBootApplication
-@MapperScan(basePackages = "com.tmw.novel.mapper")
+@MapperScan(basePackages = "com.tmw.novel.biz.mapper")
 public class NovelApplication {
 
     public static void main(String[] args) {

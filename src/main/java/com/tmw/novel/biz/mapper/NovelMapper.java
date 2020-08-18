@@ -1,4 +1,4 @@
-package com.tmw.novel.mapper;
+package com.tmw.novel.biz.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.tmw.novel.entity.Novel;

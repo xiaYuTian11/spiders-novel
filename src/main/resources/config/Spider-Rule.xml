@@ -12,6 +12,7 @@
         <chapter-detail-next-selector>.bottem2 a,3</chapter-detail-next-selector>
         <novel-selector>.book_list tr</novel-selector>
         <novel-next-page-selector>#pagelink .next</novel-next-page-selector>
+        <novel-search-url>https://www.biquge.com.cn/search.php?q=%s</novel-search-url>
     </site>
     <site>
         <title>笔趣阁</title>

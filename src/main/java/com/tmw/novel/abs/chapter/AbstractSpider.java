@@ -24,7 +24,7 @@ public abstract class AbstractSpider {
      * @param url
      * @return
      */
-    protected String crawl(String url) {
+    public String crawl(String url) {
         HttpGet httpGet = new HttpGet(url);
         RequestConfig build = RequestConfig.custom().setConnectTimeout(10 * 1000)
                 .setConnectionRequestTimeout(10 * 1000)
