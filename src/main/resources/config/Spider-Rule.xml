@@ -10,6 +10,8 @@
         <chapter-detail-content-selector>#content</chapter-detail-content-selector>
         <chapter-detail-prev-selector>.bottem2 a,1</chapter-detail-prev-selector>
         <chapter-detail-next-selector>.bottem2 a,3</chapter-detail-next-selector>
+        <novel-selector>.book_list tr</novel-selector>
+        <novel-next-page-selector>#pagelink .next</novel-next-page-selector>
     </site>
     <site>
         <title>笔趣阁</title>
